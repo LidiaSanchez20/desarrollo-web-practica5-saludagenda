@@ -1,0 +1,927 @@
+/* VARIABLES GLOBALES */
+:root {
+    --color-primario: #007bff;
+    --color-primario-hover: #0056b3;
+    --color-fondo-claro: #f4f8fc;
+    --color-blanco: #ffffff;
+    --color-texto-oscuro: #1c2a38;
+    --color-texto-secundario: #6c7a89;
+    --color-borde: #e3ebf3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-blanco);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* BARRA DE NAVEGACION */
+.barra-navegacion {
+    background-color: var(--color-blanco);
+    border-bottom: 1px solid var(--color-borde);
+    padding: 15px 0;
+}
+
+.barra-navegacion .navbar {
+    padding: 0;
+}
+
+.barra-navegacion .logo {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--color-primario);
+    gap: 8px;
+    margin: 0; 
+    padding: 0;
+}
+
+.barra-navegacion .logo svg {
+    width: 30px;
+    height: 30px;
+    color: var(--color-primario);
+}
+
+.barra-navegacion .navbar-toggler {
+    border-color: var(--color-borde);
+    padding: 4px 10px;
+}
+
+.barra-navegacion .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.menu-navegacion {
+    gap: 25px;
+}
+
+.barra-navegacion .menu-navegacion .enlace-nav {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-texto-secundario);
+    padding: 0 0 4px;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.barra-navegacion .menu-navegacion .enlace-nav:hover {
+    color: var(--color-primario);
+}
+
+.barra-navegacion .menu-navegacion .enlace-nav.activo {
+    color: var(--color-primario);
+    border-bottom: 2px solid var(--color-primario);
+}
+
+/* MEDIA QUERIES  */
+
+/* Dispositivos lg  */
+@media (max-width: 992px) {
+    .barra-navegacion .navbar-collapse {
+        padding-top: 15px;
+    }
+
+    .menu-navegacion {
+        gap: 0;
+    }
+
+    .barra-navegacion .menu-navegacion .enlace-nav {
+        display: block;
+        padding: 10px 12px;
+        font-size: 1rem;
+        border-left: 3px solid transparent;
+    }
+
+    .barra-navegacion .menu-navegacion .enlace-nav.activo {
+        border-bottom: none;
+        border-left-color: var(--color-primario);
+        background-color: var(--color-fondo-claro);
+    }
+}
+
+/* SECCION CARRUSEL */
+.seccion-carrusel .carousel-item {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-color: #1a334d;
+}
+
+.seccion-carrusel .carousel {
+    touch-action: pan-y;
+}
+
+.seccion-carrusel .carousel-control-prev,
+.seccion-carrusel .carousel-control-next {
+    z-index: 10;
+    width: 60px;
+    opacity: 0.9; 
+}
+
+.seccion-carrusel .carousel-control-prev-icon,
+.seccion-carrusel .carousel-control-next-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(10, 37, 64, 0.55);
+    background-size: 50% 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Imágenes */
+.seccion-carrusel .carousel-item:nth-child(1) {
+    background-image: url('../img/clinica-1.jpg');
+}
+.seccion-carrusel .carousel-item:nth-child(2) {
+    background-image: url('../img/clinica-2.jpg');
+}
+.seccion-carrusel .carousel-item:nth-child(3) {
+    background-image: url('../img/clinica-3.jpg');
+}
+
+.seccion-carrusel .capa-oscura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* [CAMBIO C4] Degradado simétrico (oscuro en los lados, más claro al centro) para que el texto centrado se lea bien */
+    background: linear-gradient(90deg, rgba(10, 37, 64, 0.8) 0%, rgba(10, 37, 64, 0.6) 50%, rgba(10, 37, 64, 0.8) 100%);
+}
+
+.seccion-carrusel .contenido-carrusel .container {
+    padding-left: 64px;
+    padding-right: 64px;
+}
+
+.seccion-carrusel .contenido-carrusel {
+    position: relative;
+    z-index: 2;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 0 80px;
+    color: var(--color-blanco);
+}
+
+.etiqueta-superior {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.titulo-carrusel {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0 auto 15px; 
+    max-width: 650px;
+    line-height: 1.2;
+}
+
+.texto-carrusel {
+    font-size: 1.1rem;
+    max-width: 550px;
+    margin: 0 auto 25px; 
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.boton-primario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.boton-primario:hover {
+    background-color: var(--color-primario-hover);
+    color: var(--color-blanco);
+}
+
+.boton-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--color-blanco);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.boton-secundario:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: var(--color-blanco);
+}
+
+/* SECCION ESPECIALIDADES */
+.seccion-especialidades {
+    background-color: #fafbfd;
+}
+
+.subtitulo-seccion {
+    color: var(--color-primario);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.titulo-seccion {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.descripcion-seccion {
+    color: var(--color-texto-secundario);
+    font-size: 1rem;
+}
+
+.tarjeta-servicio {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 28px 22px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+.caja-icono {
+    width: 45px;
+    height: 45px;
+    background-color: var(--color-fondo-claro);
+    color: var(--color-primario);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.caja-icono svg {
+    width: 24px;
+    height: 24px;
+}
+
+.nombre-servicio {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.descripcion-servicio {
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.enlace-servicio {
+    color: var(--color-primario);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: gap 0.2s;
+}
+
+.enlace-servicio:hover {
+    color: var(--color-primario-hover);
+}
+
+/* BANNER BENEFICIOS */
+.seccion-beneficios {
+    background-color: var(--color-blanco);
+}
+
+.caja-beneficios {
+    background-color: var(--color-fondo-claro);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 25px 20px;
+}
+
+.icono-beneficio {
+    color: var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    line-height: 1;
+}
+
+.icono-beneficio svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.titulo-beneficio {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.texto-beneficio {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 0;
+}
+
+/* REGISTRO */
+
+/* MAIN */
+main {
+    background: #fafbfd;
+}
+/* FORMULARIO */
+.formulario-registro {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.campo-requerido {
+    color: #e11d48;
+    font-weight: bold;
+}
+.texto-formulario h2{
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 0.2rem;
+}
+.texto-formulario p {
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+}
+
+/* FORMULARIO AGENDAR */
+.formulario-agendar .row {
+    row-gap: 24px;
+}
+.formulario-agendar .form-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* INPUTS */
+.formulario-agendar .form-label {
+    
+    font-weight: bold;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 10px;
+}
+.formulario-agendar .control-form {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+    color: var(--color-texto-secundario);
+}
+.formulario-agendar .control-input:not(textarea){
+    min-height: 60px;
+}
+.formulario-agendar textarea {
+    min-height: 88px;
+    resize: vertical;
+}
+.formulario-agendar .helper-text {
+    margin-top: 6px;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+.formulario-agendar .full-width {
+    width: 100%;
+}
+
+.invalid-feedback,
+.error-message {
+    font-size: 12px;
+    color: #e11d48;
+    margin-top: 6px;
+    font-weight: 500;
+}
+/* BOTONES */
+.formulario-agendar .boton-limpiar,
+.formulario-agendar .boton-guardar {
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.boton-limpiar {
+    background: var(--color-blanco);
+    color: var(--color-texto-oscuro);
+    border:  1px solid var(--color-texto-secundario);
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 12px;
+}
+.boton-guardar {
+    background: var(--color-primario);
+    color: var(--color-blanco);
+    border:  1px solid var(--color-primario);
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 12px;
+}
+.boton-limpiar:hover {
+    background: var(--color-borde);
+    transition: all .2s ease;
+}
+.boton-guardar:hover {
+    background: var(--color-primario-hover);
+    transition: all .2 ease-in-out;
+    
+}
+.boton-limpiar:active,
+.boton-guardar:active {
+    transform: translateY(1px);
+}
+
+
+
+/* FOOTER */
+.pie-pagina {
+    background-color: #fcfdfe;
+    border-top: 1px solid var(--color-borde);
+}
+
+.pie-pagina .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-primario);
+    gap: 8px;
+}
+
+.texto-footer {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.titulo-columna-footer {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.lista-contacto {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-contacto li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 10px;
+}
+
+.lista-contacto li svg {
+    width: 18px;
+    height: 18px;
+    color: var(--color-primario);
+}
+
+.enlace-contacto {
+    color: var(--color-primario);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.enlace-contacto:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+}
+/* CITAS */
+.tarjeta-filtros {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.titulo-filtro {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-texto-oscuro);
+}
+
+.etiqueta-campo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.control-form-filtro {
+    height: 44px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--color-texto-oscuro);
+    background-color: #fdfdfd;
+    padding: 8px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.control-form-filtro:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.12);
+    outline: none;
+}
+
+.boton-limpiar-filtro {
+    height: 44px;
+    background-color: #fff;
+    color: var(--color-texto-secundario);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.boton-limpiar-filtro:hover {
+    background-color: var(--color-fondo-claro);
+    color: var(--color-primario);
+    border-color: #cbd8e6;
+}
+
+.boton-limpiar-filtro:active {
+    transform: translateY(1px);
+}
+
+/* CONTACTO */
+
+.titulo-contacto-pagina {
+    font-size: 2.5rem;
+}
+
+/* TARJETA INFORMACION */
+.tarjeta-contacto {
+    background-color: #083358;
+    color: var(--color-blanco);
+    border-radius: 12px;
+}
+
+.etiqueta-contacto {
+    color: #5cb3ff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.titulo-contacto {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 8px 0 12px;
+}
+
+.texto-contacto {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+.lista-datos-contacto {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-datos-contacto li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.lista-datos-contacto li:last-child {
+    margin-bottom: 0;
+}
+
+.icono-dato-contacto {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #7cc0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono-dato-contacto svg {
+    width: 18px;
+    height: 18px;
+}
+
+.titulo-dato-contacto {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.texto-dato-contacto {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0;
+}
+
+/* FORMULARIO CONTACTO */
+.formulario-contacto {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.formulario-contacto .titulo-formulario {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.formulario-contacto .subtitulo-formulario {
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* ALERTA DE EXITO */
+.alerta-exito {
+    background-color: #d1e7dd;
+    border: 1px solid #a3cfbb;
+    border-radius: 10px;
+    color: var(--color-texto-oscuro);
+    padding: 14px 18px;
+}
+
+.alerta-exito .icono-alerta {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #198754;
+    color: var(--color-blanco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alerta-exito .titulo-alerta {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.alerta-exito .descripcion-alerta {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* CAMPOS */
+.formulario-mensaje .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.formulario-mensaje .form-label {
+    font-weight: 600;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 8px;
+}
+
+.formulario-mensaje .control-form {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+    color: var(--color-texto-oscuro);
+}
+
+.formulario-mensaje .control-form::placeholder {
+    color: #9aa5b1;
+}
+
+.formulario-mensaje .control-form:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.formulario-mensaje textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* BOTON ENVIAR */
+.boton-enviar {
+    box-shadow: 0 6px 14px rgba(0, 123, 255, 0.3);
+}
+
+/* Dispositivo sm */
+@media (max-width: 576px) {
+    .titulo-contacto-pagina {
+        font-size: 2rem;
+    }
+
+    .titulo-contacto {
+        font-size: 1.3rem;
+    }
+
+    .boton-enviar {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* MEDIA QUERIES */
+
+/* Dispositivo md  */
+@media (max-width: 768px) {
+    .titulo-carrusel {
+        font-size: 2rem;
+    }
+
+    .seccion-carrusel .contenido-carrusel {
+        min-height: 460px;
+    }
+
+    .item-beneficio {
+        padding: 10px 0;
+    }
+}
+
+/* Dispositivo sm  */
+@media (max-width: 576px) {
+    .barra-navegacion {
+        padding: 12px 0;
+    }
+
+    .seccion-carrusel .carousel-control-prev,
+    .seccion-carrusel .carousel-control-next {
+        width: 44px;
+    }
+
+    .seccion-carrusel .carousel-control-prev-icon,
+    .seccion-carrusel .carousel-control-next-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .seccion-carrusel .contenido-carrusel .container {
+        padding-left: 52px;
+        padding-right: 52px;
+    }
+
+    .seccion-carrusel .contenido-carrusel {
+        min-height: 520px;
+        padding: 50px 0 70px;
+    }
+
+    .titulo-carrusel {
+        font-size: 1.6rem;
+    }
+
+    .texto-carrusel {
+        font-size: 1rem;
+    }
+
+    .botones-carrusel {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .botones-carrusel a {
+        width: 100%;
+    }
+
+    /* Secciones */
+    .titulo-seccion {
+        font-size: 1.6rem;
+    }
+
+    .tarjeta-servicio {
+        padding: 22px 18px;
+    }
+    .lista-contacto li span {
+        overflow-wrap: anywhere;
+    }
+
+    .formulario-registro {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .formulario-agendar .row {
+        row-gap: 18px;
+    }
+    .formulario-agendar .control-form {
+        padding: 12px;
+        font-size: 16px;
+    }
+    .formulario-agendar .d-flex {
+        flex-wrap: wrap;
+    }
+}
+
+/* ESTILOS PARA EL SELECTOR DE HORARIOS */
+.select-form optgroup {
+    font-weight: 700;
+    color: var(--color-primario);
+    background-color: #f1f7fc;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.select-form option {
+    font-weight: 500;
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-blanco);
+    padding: 10px 14px;
+    font-size: 0.95rem;
+}
+
+/* Espaciado y borde para el select */
+.select-wrapper select.control-form {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%236c7a89' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 14px 10px;
+    padding-right: 2.5rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-wrapper select.control-form:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}

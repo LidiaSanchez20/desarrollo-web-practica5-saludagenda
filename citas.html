@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaludAgenda - Citas</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <!-- BARRA DE NAVEGACION -->
+    <header class="barra-navegacion sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+
+                <a href="index.html" class="logo navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-heart-pulse" viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5" />
+                        <path
+                            d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162z" />
+                    </svg>
+                    <span class="nombre-logo">SaludAgenda</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav menu-navegacion ms-auto">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link enlace-nav" aria-current="page">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="registro.html" class="nav-link enlace-nav">Agendar cita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="citas.html" class="nav-link enlace-nav activo">Mis citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contacto.html" class="nav-link enlace-nav">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container my-5">
+        <section class="encabezado-seccion d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+                <span class="subtitulo-seccion">CONTROL Y SEGUIMIENTO</span>
+                <h2 class="titulo-seccion">Listado de Citas Médicas</h2>
+                <p class="descripcion-seccion mb-0">Consulta, filtra, actualiza y descarga tus citas agendadas</p>
+            </div>
+            <div>
+                <button id="btnExportarTxt" class="boton-guardar d-inline-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                        class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                        <path
+                            d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                        <path
+                            d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+                    </svg>
+                    <span>Exportar a TXT</span>
+                </button>
+            </div>
+        </section>
+        <!-- FILTROS -->
+        <section class="tarjeta-filtros mb-4">
+            <div class="cabecera-filtros d-flex align-items-center gap-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                    class="bi bi-funnel text-primary" viewBox="0 0 16 16">
+                    <path
+                        d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z" />
+                </svg>
+                <h5 class="titulo-filtro mb-0">Filtrar citas</h5>
+            </div>
+
+            <div class="row g-3 align-items-end">
+                <div class="col-12 col-md-4">
+                    <label for="filtroEspecialidad" class="etiqueta-campo">Especialidad</label>
+                    <div class="input-contenedor">
+                        <select id="filtroEspecialidad" class="control-form-filtro form-select">
+                            <option value="" disabled selected>Selecciona una especialidad</option>
+                            <option value="Pediatría">Pediatría</option>
+                            <option value="Odontología">Odontología</option>
+                            <option value="Ginecología">Ginecología</option>
+                            <option value="Medicina general">Medicina general</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <label for="filtroFechaInicio" class="etiqueta-campo">Desde</label>
+                    <input type="date" id="filtroFechaInicio" class="control-form-filtro form-control">
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <label for="filtroFechaFin" class="etiqueta-campo">Hasta</label>
+                    <input type="date" id="filtroFechaFin" class="control-form-filtro form-control">
+                </div>
+
+                <div class="col-12 col-md-2">
+                    <button id="btnLimpiarFiltros" type="button"
+                        class="boton-limpiar-filtro w-100 d-inline-flex align-items-center justify-content-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                            <path
+                                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+                        </svg>
+                        <span>Restablecer</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CITAS -->
+        <section class="card p-3 border shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Especialidad</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaCitasCuerpo">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="modalEditarCita" tabindex="-1" aria-labelledby="modalEditarTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalEditarTitulo">Editar Cita Médica</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <form id="formEditarCita">
+                    <div class="modal-body">
+                        <input type="hidden" id="editCitaId">
+
+                        <div class="mb-3">
+                            <label for="editNombre" class="form-label fw-semibold">Nombre del Paciente</label>
+                            <input type="text" class="form-control" id="editNombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEspecialidad" class="form-label fw-semibold">Especialidad</label>
+                            <select class="form-select" id="editEspecialidad" required>
+                                <option value="" disabled selected>Selecciona una especialidad</option>
+                                <option value="Pediatría">Pediatría</option>
+                                <option value="Odontología">Odontología</option>
+                                <option value="Ginecología">Ginecología</option>
+                                <option value="Medicina general">Medicina general</option>
+                            </select>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label for="editFecha" class="form-label fw-semibold">Fecha</label>
+                                <input type="date" class="form-control" id="editFecha" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="editHora" class="form-label fw-semibold">Hora</label>
+                                <select class="form-select" id="editHora" required>
+                                    <option value="" disabled selected>Selecciona un horario</option>
+                                    <optgroup label="Turno Matutino">
+                                        <option value="08:00">08:00 AM</option>
+                                        <option value="08:30">08:30 AM</option>
+                                        <option value="09:00">09:00 AM</option>
+                                        <option value="09:30">09:30 AM</option>
+                                        <option value="10:00">10:00 AM</option>
+                                        <option value="10:30">10:30 AM</option>
+                                        <option value="11:00">11:00 AM</option>
+                                        <option value="11:30">11:30 AM</option>
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="12:30">12:30 PM</option>
+                                    </optgroup>
+                                    <optgroup label="Turno Vespertino">
+                                        <option value="14:00">02:00 PM</option>
+                                        <option value="14:30">02:30 PM</option>
+                                        <option value="15:00">03:00 PM</option>
+                                        <option value="15:30">03:30 PM</option>
+                                        <option value="16:00">04:00 PM</option>
+                                        <option value="16:30">04:30 PM</option>
+                                        <option value="17:00">05:00 PM</option>
+                                        <option value="17:30">05:30 PM</option>
+                                        <option value="18:00">06:00 PM</option>
+                                        <option value="18:30">06:30 PM</option>
+                                        <option value="19:00">07:00 PM</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEstado" class="form-label fw-semibold">Estado</label>
+                            <select class="form-select" id="editEstado" required>
+                                <option value="Programada">Programada</option>
+                                <option value="Confirmada">Confirmada</option>
+                                <option value="Cancelada">Cancelada</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="boton-guardar">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="pie-pagina py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-5">
+                    <div class="logo d-flex align-items-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-heart-pulse" viewBox="0 0 16 16">
+                            <path
+                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5" />
+                            <path
+                                d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162z" />
+                        </svg>
+                        <span class="nombre-logo">SaludAgenda</span>
+                    </div>
+                    <p class="texto-footer pe-md-4">Cuidamos tu salud con atención cercana, profesional y oportuna para
+                        toda tu familia.</p>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h4 class="titulo-columna-footer">Contacto</h4>
+                    <ul class="lista-contacto">
+                        <li><span>Av. Bienestar 245, Centro</span></li>
+                        <li><span>+52 55 1234 5678</span></li>
+                        <li><span>hola@saludagenda.mx</span></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-3">
+                    <h4 class="titulo-columna-footer">Horario de atención</h4>
+                    <p class="texto-footer mb-1">Lunes a viernes: 8:00–20:00</p>
+                    <p class="texto-footer mb-3">Sábados: 9:00–14:00</p>
+                    <a href="contacto.html" class="enlace-contacto">Contáctanos &rarr;</a>
+                </div>
+            </div>
+            <div class="copyright text-center pt-4 mt-4 border-top">
+                <p class="mb-0">&copy; 2026 SaludAgenda. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS OBLIGATORIOS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/utilidades.js"></script>
+    <script src="js/citas.js"></script>
+
+
+</body>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaludAgenda - Registro</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <!-- BARRA DE NAVEGACION -->
+    <header class="barra-navegacion sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+
+                <a href="index.html" class="logo navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5"/>
+                    <path d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162z"/>
+                </svg>
+                    <span class="nombre-logo">SaludAgenda</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav menu-navegacion ms-auto">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link enlace-nav" aria-current="page">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="registro.html" class="nav-link enlace-nav activo">Agendar cita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="citas.html" class="nav-link enlace-nav">Mis citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contacto.html" class="nav-link enlace-nav">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container my-5">
+        <!-- SECCION TITULO -->
+        <section class="encabezado-seccion mb-4">
+            <span class="subtitulo-seccion">RESERVA EN LÍNEA</span>
+            <h2 class="titulo-seccion">Agenda tu cita médica</h2>
+            <p class="descripcion-seccion">Completa tus datos y selecciona el horario que mejor se adapte a ti. 
+                Te enviaremos una confirmación por correo.
+            </p>
+        </section>
+
+        <!-- FORMULARIO REGISTRO -->
+        <div class="card p-4 p-md-5 formulario-registro">
+            <div class="p-0 mb-4 d-flex align-items-start gap-3">
+                <div class="caja-icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16">
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/>
+                        <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </div>
+                <div class="texto-formulario">
+                    <h2>Datos de la cita</h2>
+                    <p>Los campos marcados con <span class="campo-obligatorio">*</span> son obligatorios.</p>
+                </div>
+            </div>
+            <!-- FORM CITA -->
+            <form id="FormularioAgendar" class="formulario-agendar" novalidate>
+                <div class="row g-3 g-md-4">
+                    <!-- NOMBRE -->
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="nombre" class="form-label">Nombre Completo<span class="campo-obligatorio text-danger">*</span></label>
+                        <input type="text" id="nombre" name="nombre" class="control-form control-input"  placeholder="Ej. María González" autocomplete="name">
+                        <div class="invalid-feedback error-message" id="error-nombre">Por favor ingresa tu nombre completo</div>
+                    </div>
+                    <!-- CORREO -->
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="email" class="form-label">Correo Electrónico<span class="campo-obligatorio text-danger">*</span></label>
+                        <input type="email" id="email" name="email" class="control-form control-input" placeholder="nombre@correo.com" autocomplete="email">
+                        <div class="invalid-feedback error-message" id="error-email">Por favor ingresa un correo electrónico válido</div>
+                    </div>
+                    <!-- TELEFONO -->
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="telefono" class="form-label">Teléfono<span class="campo-obligatorio text-danger">*</span></label>
+                        <input type="tel" id="telefono" name="telefono" class="control-form control-input" placeholder="55 1234 5678" autocomplete="tel">
+                        <div class="invalid-feedback error-message" id="error-telefono">El teléfono debe contener al menos 10 dígitos numéricos</div>
+                    </div>
+                    <!-- ESPECIALIDAD -->
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="especialidad" class="form-label">Especialidad<span class="campo-obligatorio text-danger">*</span></label>
+                        <div class="select-wrapper">
+                            <select name="especialidad" id="especialidad" class="select-form control-form control-input">
+                                <option value="" disabled selected>Selecciona una especialidad</option>
+                                <option value="Pediatría">Pediatría</option>
+                                <option value="Odontología">Odontología</option>
+                                <option value="Ginecología">Ginecología</option>
+                                <option value="Medicina general">Medicina general</option>
+                            </select>
+                        </div>
+                        <div class="invalid-feedback error-message" id="error-especialidad">Seleccione una especialidad</div>
+                    </div>
+                    <!-- FECHA -->
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="fecha" class="form-label">Fecha<span class="campo-obligatorio text-danger">*</span></label>
+                        <input type="date" id="fecha" name="fecha" class="control-form control-input">
+                        <div class="form-text helper-text" id="helper-fecha">No se permiten fechas pasadas</div>
+                        <div class="invalid-feedback error-message" id="error-fecha">Seleccione una fecha válida</div>
+                    </div>
+                    <!-- HORA -->
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="hora" class="form-label">Hora<span class="campo-obligatorio text-danger">*</span></label>
+                        <div class="select-wrapper">
+                            <select name="hora" id="hora" class="select-form control-form control-input">
+                                <option value="" disabled selected>Selecciona un horario disponible</option>
+                                <optgroup label="Turno Matutino">
+                                    <option value="08:00">08:00 AM</option>
+                                    <option value="08:30">08:30 AM</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="09:30">09:30 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="10:30">10:30 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="11:30">11:30 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="12:30">12:30 PM</option>
+                                </optgroup>
+                                <optgroup label="Turno Vespertino">
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="14:30">02:30 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="15:30">03:30 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="16:30">04:30 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                    <option value="17:30">05:30 PM</option>
+                                    <option value="18:00">06:00 PM</option>
+                                    <option value="18:30">06:30 PM</option>
+                                    <option value="19:00">07:00 PM</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="invalid-feedback error-message" id="error-hora">Selecciona un horario para tu consulta</div>
+                    </div>
+                    <!-- MOTIVO -->
+                     <div class="col-12 form-group full-width">
+                        <label for="motivo" class="form-label">Motivo de la consulta<span class="campo-obligatorio text-danger">*</span></label>
+                        <textarea id="motivo" name="motivo" class="control-form control-input" placeholder="Describe brevemente el motivo de tu visita." rows="4" maxlength="500"></textarea>
+                        <div class="form-text helper-text" id="helper-motivo">Máximo 500 caracteres</div>
+                        <div class="invalid-feedback error-message" id="error-motivo">Por favor describe el motivo de tu consulta</div>
+                    </div>
+
+                </div>
+                <hr class="my-4 text-secondary opacity-25 form-divider">
+                
+                <!-- BOTONES -->
+                <div class="d-flex justify-content-end align-items-center gap-2">
+                    <button type="button" id="btnLimpiar" class="boton-limpiar">Limpiar</button>
+                    <button type="submit" id="btnGuardar" class="boton-guardar d-inline-flex align-items-center gap-2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Guardar cita</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+    <!-- FOOTER -->
+    <footer class="pie-pagina py-5">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- Columna 1: Presentación -->
+                <div class="col-12 col-md-5">
+                    <div class="logo d-flex align-items-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5"/>
+                            <path d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162z"/>
+                        </svg>
+                        <span class="nombre-logo">SaludAgenda</span>
+                    </div>
+                    <p class="texto-footer pe-md-4">Cuidamos tu salud con atención cercana, profesional y oportuna para toda tu familia.</p>
+                </div>
+
+                <!-- Columna 2: Contacto -->
+                <div class="col-12 col-md-4">
+                    <h4 class="titulo-columna-footer">Contacto</h4>
+                    <ul class="lista-contacto">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                            <span>Av. Bienestar 123, Centro</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                            </svg>
+                            <span>+52 55 1234 5678</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                            </svg>
+                            <span>hola@saludagenda.mx</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Horarios -->
+                <div class="col-12 col-md-3">
+                    <h4 class="titulo-columna-footer">Horario de atención</h4>
+                    <p class="texto-footer mb-1">Lunes a viernes: 8:00 AM – 8:00 PM</p>
+                    <p class="texto-footer mb-3">Sábados: 9:00 AM – 2:00 PM</p>
+                    <a href="contacto.html" class="enlace-contacto">Contáctanos &rarr;</a>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="copyright text-center pt-4 mt-4 border-top">
+                <p class="mb-0">&copy; 2026 SaludAgenda. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts de utilidades y registro JS-->
+    <script src="js/utilidades.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+
+</html>
